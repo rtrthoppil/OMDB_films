@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="model"
+            type="com.rtr.omdbfilms.model.RefreshModel" />
+        <variable
+            name="viewModel"
+            type="com.rtr.omdbfilms.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <ImageButton
+            android:id="@+id/imageButtonErrorMessage"
+            android:layout_width="@dimen/dimen_100_dp"
+            android:layout_height="@dimen/dimen_100_dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            android:scaleType="fitXY"
+            android:src="@{ model.iconResourceId }"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewErrorMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30_dp"
+            android:gravity="center"
+            android:text="@{ model.message }"
+            android:textSize="@dimen/font_size_14_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageButtonErrorMessage" />
+
+        <Button
+            android:id="@+id/buttonErrorMessageRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_50_dp"
+            android:background="@color/colorPrimary"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:minWidth="@dimen/dimen_150_dp"
+            android:onClick="@{ viewModel::onClickRetryButton }"
+            android:paddingStart="@dimen/dimen_30_dp"
+            android:paddingEnd="@dimen/dimen_30_dp"
+            android:text="@{ model.positiveButtonTitle }"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/font_size_16_sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textViewErrorMessage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

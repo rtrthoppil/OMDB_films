@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.rtr.omdbfilms.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBaseFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/layoutBaseFragmentContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:visibility="@{ viewModel.showContent ? View.VISIBLE : View.GONE }" />
+
+        <include
+            android:id="@+id/includedLayoutProgressView"
+            layout="@layout/layout_common_progress"
+            android:visibility="@{ viewModel.showProgress ? View.VISIBLE : View.GONE }" />
+
+        <include
+            android:id="@+id/includedLayoutErrorMessageView"
+            layout="@layout/layout_common_error_message"
+            android:visibility="@{ viewModel.showErrorMessage ? View.VISIBLE : View.GONE }"
+            bind:viewModel="@{ viewModel }" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

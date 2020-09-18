@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">OMDB Films</string>
+
+    <string name="empty_list">List is empty</string>
+    <string name="retry">Retry</string>
+    <string name="error_title">Communication Error</string>
+    <string name="error_message">Something went wrong</string>
+</resources>
