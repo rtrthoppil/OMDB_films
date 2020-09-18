@@ -36,7 +36,7 @@ class SplashActivity : BaseActivity() {
      * Method to navigate to home screen
      */
     private fun navigateToHomeScreen(){
-        //startActivity(Intent(this, HomeActivity::class.java))
+        startActivity(Intent(this, HomeActivity::class.java))
         finish()
     }
 }
