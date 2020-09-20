@@ -52,16 +52,13 @@ class MovieDetailsFragment :  BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.viewModel = viewModel
-        viewModel.showProgressView(true)
+        viewModel.getDataFromServer(arguments?.getString(AppConstUtils.INTENT_KEY_MOVIE_ID) ?: "")
     }
 
     /**
      * Method to add observers
      */
     private fun addObservers(){
-        viewModel.getMovieDetails(arguments?.getString(AppConstUtils.INTENT_KEY_MOVIE_ID) ?: "").observe(this, Observer {
-            viewModel.movieDetails.set(it)
-            viewModel.showProgressView(false)
-        })
+        viewModel.response.observe(this, Observer {  })
     }
 }

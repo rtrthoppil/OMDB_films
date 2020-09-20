@@ -35,7 +35,8 @@
             android:id="@+id/includedLayoutErrorMessageView"
             layout="@layout/layout_common_error_message"
             android:visibility="@{ viewModel.showErrorMessage ? View.VISIBLE : View.GONE }"
-            bind:viewModel="@{ viewModel }" />
+            bind:viewModel="@{ viewModel }"
+            bind:model="@{viewModel.refreshModel}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

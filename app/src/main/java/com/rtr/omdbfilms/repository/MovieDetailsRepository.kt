@@ -3,9 +3,7 @@ package com.rtr.omdbfilms.repository
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import com.rtr.omdbfilms.model.MovieDetailsModel
-import com.rtr.omdbfilms.model.MovieModel
 import com.rtr.omdbfilms.model.response.MovieDetailsResponse
-import com.rtr.omdbfilms.model.response.MoviesResponse
 import com.rtr.omdbfilms.utils.AppConstUtils
 import com.rtr.omdbfilms.utils.MoviesApiService
 import com.rtr.omdbfilms.utils.RetrofitHelper
@@ -41,7 +39,7 @@ class MovieDetailsRepository {
             }
             override fun onResponse(call: Call<MovieDetailsResponse?>, response: Response<MovieDetailsResponse?>) {
                 if(response.isSuccessful && response.code() == AppConstUtils.API_SUCCESS)
-                    movieDetails.value = getMovieDetails(response.body())
+                    movieDetails.postValue(getMovieDetails(response.body()))
                 else movieDetails.postValue(null)
             }
         })
