@@ -23,6 +23,7 @@ object AppConstUtils {
     const val API_KEY_VALUE = "b9bd48a6"
 
     const val API_KEY_SEARCH = "s"
+    const val API_KEY_SEARCH_VALUE = "Marvel"
     const val API_KEY_PAGE = "page"
     const val API_KEY_TYPE = "type"
     const val API_KEY = "apikey"

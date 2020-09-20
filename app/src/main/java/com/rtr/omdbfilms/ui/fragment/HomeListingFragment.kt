@@ -42,6 +42,7 @@ class HomeListingFragment :  BaseFragment(), OnClickMovieItem {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProvider(this).get(HomeListingViewModel::class.java)
+        viewModel.response.observe(this, Observer {  })
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

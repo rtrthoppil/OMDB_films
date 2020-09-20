@@ -50,14 +50,14 @@ class MoviesDataSource(private val searchKey : String? = null) : PageKeyedDataSo
         val apiCall = movieApiService?.getMovieList(searchKey = searchKey, pageNumber = params.key.toString())
         apiCall?.enqueue(object  : Callback<MoviesResponse?> {
             override fun onFailure(call: Call<MoviesResponse?>, error: Throwable) {
-                isInitialLoadingError.postValue(true)
+                isLoadingError.postValue(true)
             }
             override fun onResponse(call: Call<MoviesResponse?>, response: Response<MoviesResponse?>) {
                 if(response.isSuccessful && response.code() == API_SUCCESS) {
                     val list = getMovieList(response.body())
                     callback.onResult(list, params.key + 1)
                 }
-                else isInitialLoadingError.postValue(true)
+                else isLoadingError.postValue(true)
             }
         })
     }
