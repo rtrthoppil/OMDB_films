@@ -82,9 +82,9 @@ open class BaseViewModel(var appContext: Application) : AndroidViewModel(appCont
      * Method to show progress view
      */
     fun showProgressView(status: Boolean) {
-        showContent.set(status)
+        showContent.set(true)
         showProgress.set(status)
-        showErrorMessage.set(!status)
+        showErrorMessage.set(false)
     }
 
     /**

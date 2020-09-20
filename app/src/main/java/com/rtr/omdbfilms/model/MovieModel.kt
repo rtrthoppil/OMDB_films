@@ -4,6 +4,8 @@ import android.graphics.Movie
 import android.os.Parcelable
 import android.view.View
 import androidx.recyclerview.widget.DiffUtil
+import com.rtr.omdbfilms.utils.OnClickMovieItem
+import kotlinx.android.parcel.IgnoredOnParcel
 import kotlinx.android.parcel.Parcelize
 
 
@@ -23,8 +25,11 @@ data class MovieModel(
     var type : String? = "",
     var posterUrl : String? = "") : Parcelable{
 
-    fun onClickMovieItem(view : View){
+    @IgnoredOnParcel
+    var clickListener : OnClickMovieItem? = null
 
+    fun onClickMovieItem(view : View){
+        clickListener?.onClickItem(this)
     }
 
     companion object{

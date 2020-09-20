@@ -12,7 +12,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.rtr.omdbfilms.R
 import com.rtr.omdbfilms.base.BaseFragment
 import com.rtr.omdbfilms.databinding.FragmentHomeBinding
+import com.rtr.omdbfilms.model.MovieModel
 import com.rtr.omdbfilms.ui.adapter.MovieListAdapter
+import com.rtr.omdbfilms.utils.ClickUtilsCallback
+import com.rtr.omdbfilms.utils.OnClickMovieItem
 import com.rtr.omdbfilms.viewmodel.HomeListingViewModel
 
 /**
@@ -23,11 +26,12 @@ import com.rtr.omdbfilms.viewmodel.HomeListingViewModel
 /**
  * Fragment class for home listing screen
  */
-class HomeListingFragment :  BaseFragment() {
+class HomeListingFragment :  BaseFragment(), OnClickMovieItem {
 
     lateinit var viewModel: HomeListingViewModel
     lateinit var binding: FragmentHomeBinding
     lateinit var adapter: MovieListAdapter
+    private lateinit var clickUtilsCallback: ClickUtilsCallback
 
     companion object {
         fun newInstance(): HomeListingFragment {
@@ -63,10 +67,17 @@ class HomeListingFragment :  BaseFragment() {
     }
 
     /**
+     * Method to attach listener for click
+     */
+    fun setOnClickAction(clickUtilsCallback: ClickUtilsCallback) {
+        this.clickUtilsCallback = clickUtilsCallback
+    }
+
+    /**
      * Method to set adapter
      */
     private fun setAdapterForMovieListing(){
-        adapter = MovieListAdapter()
+        adapter = MovieListAdapter(this)
         binding.recyclerViewMovies.apply {
             setHasFixedSize(true)
             layoutManager = GridLayoutManager(this.context,2)
@@ -85,5 +96,9 @@ class HomeListingFragment :  BaseFragment() {
         override fun onQueryTextChange(newText: String?): Boolean {
             return true
         }
+    }
+
+    override fun onClickItem(item: MovieModel) {
+        clickUtilsCallback.onClickItem(item)
     }
 }

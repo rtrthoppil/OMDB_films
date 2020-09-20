@@ -1,7 +1,9 @@
 package com.rtr.omdbfilms.utils
 
+import com.rtr.omdbfilms.model.response.MovieDetailsResponse
 import com.rtr.omdbfilms.model.response.MoviesResponse
 import com.rtr.omdbfilms.utils.AppConstUtils.API_KEY
+import com.rtr.omdbfilms.utils.AppConstUtils.API_KEY_ID
 import com.rtr.omdbfilms.utils.AppConstUtils.API_KEY_PAGE
 import com.rtr.omdbfilms.utils.AppConstUtils.API_KEY_SEARCH
 import com.rtr.omdbfilms.utils.AppConstUtils.API_KEY_TYPE
@@ -29,5 +31,9 @@ interface MoviesApiService {
                      @Query(API_KEY_TYPE) type : String = SEARCH_TYPE,
                      @Query(API_KEY_PAGE) pageNumber : String = SEARCH_PAGE
     ) : Call<MoviesResponse?>
+
+    @GET("/")
+    fun getMovieDetails(@Query(API_KEY) apiKey : String = API_KEY_VALUE,
+                        @Query(API_KEY_ID) movieId : String? = "") : Call<MovieDetailsResponse?>
 
 }

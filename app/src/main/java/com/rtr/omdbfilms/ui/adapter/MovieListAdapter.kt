@@ -6,6 +6,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.rtr.omdbfilms.databinding.LayoutMovieBinding
 import com.rtr.omdbfilms.model.MovieModel
+import com.rtr.omdbfilms.utils.OnClickMovieItem
 
 /**
  * Created by RAHUL T R
@@ -15,7 +16,7 @@ import com.rtr.omdbfilms.model.MovieModel
 /**
  * Paged list adapter class for listing movies
  */
-class MovieListAdapter : PagedListAdapter<MovieModel, MovieListAdapter.MovieViewHolder>(MovieModel.DIFF_CALL){
+class MovieListAdapter(var listener: OnClickMovieItem) : PagedListAdapter<MovieModel, MovieListAdapter.MovieViewHolder>(MovieModel.DIFF_CALL){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         return MovieViewHolder(LayoutMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false))
@@ -31,6 +32,7 @@ class MovieListAdapter : PagedListAdapter<MovieModel, MovieListAdapter.MovieView
     inner class MovieViewHolder(var binding: LayoutMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun setModel(item: MovieModel) {
+            item.clickListener = listener
             binding.model = item
         }
     }

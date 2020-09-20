@@ -14,7 +14,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutBaseFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true">
 
         <FrameLayout
             android:id="@+id/layoutBaseFragmentContent"

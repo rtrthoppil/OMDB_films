@@ -26,8 +26,11 @@ object AppConstUtils {
     const val API_KEY_PAGE = "page"
     const val API_KEY_TYPE = "type"
     const val API_KEY = "apikey"
+    const val API_KEY_ID = "i"
 
     const val SEARCH_TYPE = "movie"
     const val SEARCH_KEY = "null"
     const val SEARCH_PAGE = "1"
+
+    const val INTENT_KEY_MOVIE_ID = "movie_id"
 }

@@ -9,7 +9,7 @@ import com.rtr.omdbfilms.base.BaseResponse
  */
 
 /**
- * Data class for movie list
+ * Data response class for movie list
  */
 data class MoviesResponse(
     @SerializedName("totalResults") val totalResults : String = "",
