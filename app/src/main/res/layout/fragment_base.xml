@@ -14,7 +14,10 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutBaseFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true">
 
         <FrameLayout
             android:id="@+id/layoutBaseFragmentContent"
@@ -32,7 +35,8 @@
             android:id="@+id/includedLayoutErrorMessageView"
             layout="@layout/layout_common_error_message"
             android:visibility="@{ viewModel.showErrorMessage ? View.VISIBLE : View.GONE }"
-            bind:viewModel="@{ viewModel }" />
+            bind:viewModel="@{ viewModel }"
+            bind:model="@{viewModel.refreshModel}"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="viewModel"
+            type="com.rtr.omdbfilms.viewmodel.MovieDetailsViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:paddingBottom="@dimen/dimen_200_dp"
+        android:clipToPadding="false">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dimen_15_dp">
+
+            <ImageView
+                android:id="@+id/imageViewMovieDetails"
+                loadImage="@{ viewModel.movieDetails.posterUrl }"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_250_dp"
+                android:contentDescription="@string/app_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.movieDetails.title }"
+                android:textSize="@dimen/font_size_16_sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageViewMovieDetails" />
+
+            <TextView
+                android:id="@+id/textViewYear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{ @string/released_on + ' ' + viewModel.movieDetails.releaseDate }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+
+            <View
+                android:id="@+id/viewLineOne"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1_dp"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:background="@color/offWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewYear" />
+
+            <TextView
+                android:id="@+id/textViewCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@{ viewModel.movieDetails.genre }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewLineOne" />
+
+            <TextView
+                android:id="@+id/textViewLanguage"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@{ @string/language + ' ' + viewModel.movieDetails.language }"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/textViewDuration"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewCategories" />
+
+            <TextView
+                android:id="@+id/textViewDuration"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:text="@{ @string/duration + ' ' + viewModel.movieDetails.duration }"
+                android:textAlignment="textStart"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewLanguage"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewLanguage"
+                app:layout_constraintTop_toTopOf="@+id/textViewLanguage" />
+
+            <TextView
+                android:id="@+id/textViewRating"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@{ @string/rating + ' ' + viewModel.movieDetails.rating }"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/textViewVoting"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewLanguage" />
+
+            <TextView
+                android:id="@+id/textViewVoting"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:text="@{ @string/votes + ' ' + viewModel.movieDetails.voting }"
+                android:textAlignment="textStart"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewRating"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewRating"
+                app:layout_constraintTop_toTopOf="@+id/textViewRating" />
+
+            <View
+                android:id="@+id/viewLineTwo"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1_dp"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:background="@color/offWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewRating" />
+
+            <TextView
+                android:id="@+id/textViewAwards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@{ @string/awards + ' ' + viewModel.movieDetails.award }"
+                android:visibility="@{ TextUtils.isEmpty(viewModel.movieDetails.award) ? View.GONE : View.VISIBLE }"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/viewLineTwo" />
+
+            <TextView
+                android:id="@+id/textViewDirector"
+                android:layout_width="@dimen/dimen_100_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@string/director"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/textViewDirectorValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewAwards" />
+
+            <TextView
+                android:id="@+id/textViewDirectorValue"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.movieDetails.director }"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewDirector"
+                app:layout_constraintTop_toTopOf="@+id/textViewDirector" />
+
+            <TextView
+                android:id="@+id/textViewWriter"
+                android:layout_width="@dimen/dimen_100_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@string/writer"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/textViewWriterValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewDirectorValue" />
+
+            <TextView
+                android:id="@+id/textViewWriterValue"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.movieDetails.writer }"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewWriter"
+                app:layout_constraintTop_toTopOf="@+id/textViewWriter" />
+
+            <TextView
+                android:id="@+id/textViewActor"
+                android:layout_width="@dimen/dimen_100_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@string/actor"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/textViewActorValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewWriterValue" />
+
+            <TextView
+                android:id="@+id/textViewActorValue"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.movieDetails.actors }"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewActor"
+                app:layout_constraintTop_toTopOf="@+id/textViewActor" />
+
+            <TextView
+                android:id="@+id/textViewProductions"
+                android:layout_width="@dimen/dimen_100_dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:text="@string/production"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/textViewProductionsValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewActorValue" />
+
+            <TextView
+                android:id="@+id/textViewProductionsValue"
+                android:layout_width="@dimen/dimen_0_dp"
+                android:layout_height="wrap_content"
+                android:text="@{ viewModel.movieDetails.production }"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewProductions"
+                app:layout_constraintTop_toTopOf="@+id/textViewProductions" />
+
+            <View
+                android:id="@+id/viewLineThree"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_1_dp"
+                android:layout_marginTop="@dimen/dimen_8_dp"
+                android:background="@color/offWhite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewProductionsValue" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>

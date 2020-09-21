@@ -5,4 +5,16 @@
     <string name="retry">Retry</string>
     <string name="error_title">Communication Error</string>
     <string name="error_message">Something went wrong</string>
+
+    <string name="released_on">Released on</string>
+    <string name="director">Director</string>
+    <string name="actor">Actor</string>
+    <string name="writer">Writer</string>
+    <string name="production">Production</string>
+
+    <string name="language">Language :</string>
+    <string name="duration">Duration :</string>
+    <string name="rating">Rating :</string>
+    <string name="votes">Votes :</string>
+    <string name="awards">Awards :</string>
 </resources>
